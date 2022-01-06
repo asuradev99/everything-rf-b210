@@ -1,6 +1,5 @@
 #!/bin/bash
-#credit to Alex Orange's startup shell script: 
-#https://gitlab.flux.utah.edu/alex_orange/everything-rf-profile
+
 # Get the emulab repo 
 while ! wget -qO - http://repos.emulab.net/emulab.key | sudo apt-key add -
 do
