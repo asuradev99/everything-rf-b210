@@ -1,3 +1,6 @@
+#credit to Alex Orange's startup shell script: 
+#https://gitlab.flux.utah.edu/alex_orange/everything-rf-profile
+
 #!/bin/bash
 
 # Get the emulab repo 
