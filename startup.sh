@@ -16,6 +16,14 @@ do
     echo Failed to update, retrying
 done
 
+
+#add the default repo from the Ettus's offical guide if this doesn't work
+
+while ! sudo apt-get install libuhd-dev libuhd4.1.0 uhd-host
+do
+    echo Failed to get uhd packages, retrying
+done
+
 do_channel_setup=0
 
 for thing in $*
