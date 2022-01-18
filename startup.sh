@@ -19,7 +19,7 @@ done
 
 #add the default repo from the Ettus's offical guide if this doesn't work
 
-while ! sudo apt-get install libuhd-dev libuhd4.1.0 uhd-host
+while ! sudo apt-get install libuhd-dev libuhd4.0.0 uhd-host
 do
     echo Failed to get uhd packages, retrying
 done
