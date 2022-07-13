@@ -14,6 +14,7 @@ import geni.rspec.pg as pg
 import geni.urn as urn
 # Emulab extension
 import geni.rspec.emulab
+import geni.rspec.emulab.spectrum as spectrum
 
 #Default params
 DEFFREQMIN = 2426.0
