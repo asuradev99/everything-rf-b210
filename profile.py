@@ -15,6 +15,10 @@ import geni.urn as urn
 # Emulab extension
 import geni.rspec.emulab
 
+#Default params
+DEFFREQMIN = 2426.0
+DEFFREQMAX = 2448.0
+
 # Create a portal context.
 pc = portal.Context()
 
@@ -25,6 +29,22 @@ request = pc.makeRequestRSpec()
 pc.defineParameter("NodeID", "Node URN",
                    portal.ParameterType.STRING, 
                    "urn:publicid:IDN+emulab.net+node+pc444")
+portal.context.defineParameter(
+    "freq_min",
+    "Frequency Min",
+    portal.ParameterType.BANDWIDTH,
+    DEFFREQMIN,
+    longDescription="Values are rounded to the nearest kilohertz."
+)
+
+portal.context.defineParameter(
+    "freq_max",
+    "Frequency Max",
+    portal.ParameterType.BANDWIDTH,
+    DEFFREQMAX,
+    longDescription="Values are rounded to the nearest kilohertz."
+)
+
 params = pc.bindParameters()
 
 if params.NodeID == '':
@@ -44,6 +64,9 @@ node.component_id = params.NodeID
 node.b210_node_disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
 
 node.addService(pg.Execute(shell="bash", command="/local/repository/startup.sh"))
+
+#Reserve requested freq bandwidth
+request.requestSpectrum(params.freq_min, params.freq_max, 0)
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
